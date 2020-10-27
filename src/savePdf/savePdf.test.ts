@@ -14,10 +14,17 @@ beforeAll(async () => {
     }
 });
 
-describe(savePdf.name, () => {
+describe("savePdf(path: string, pdf: PDFDocument)", () => {
+	//@TODO
+	// it("calls throwIfPathDoesNotEndWithPdf",() => {
+		
+	// })
+	// it("calls rejectIfPathExists",() => {
+
+	// })
     it("saves the pdf to the provided path", async () => {
         const pdf = await PDFDocument.create();
-		await savePdf(path.resolve(__dirname,pdfToSaveFileName),pdf);
-		await expect(fs.access(path.resolve(__dirname, pdfToSaveFileName))).resolves.toBeUndefined();
+        await savePdf(path.resolve(__dirname, pdfToSaveFileName), pdf);
+        await expect(fs.access(path.resolve(__dirname, pdfToSaveFileName))).resolves.toBeUndefined();
     });
 });

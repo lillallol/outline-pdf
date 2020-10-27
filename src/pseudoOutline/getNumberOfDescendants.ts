@@ -1,5 +1,8 @@
 import { IOutline } from "../common/types";
 
+/**
+ * @description It returns the number of descendant outline nodes of the provided outline node.
+ */
 export function getNumberOfDescendants(outline: IOutline, i: number): number {
     let count = 0;
     const contextDepth = outline[i].depth;

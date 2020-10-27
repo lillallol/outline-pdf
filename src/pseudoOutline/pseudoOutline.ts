@@ -22,10 +22,23 @@ type outlineItem = {
     Dest: number;
 };
 
+/**
+ * @description It returns the information to "hydrate" outline.
+*/
 export function pseudoOutline(
     outline: IOutline,
     parent: PDFRef
-): { outlineItems: outlineItem[]; outlineRootCount: number } {
+): { 
+	/**
+	 * @description It returns a low level programmatic representation of the outline.
+	*/
+	outlineItems: outlineItem[]; 
+	/**
+	 * @description The number of outline nodes with depth 0.
+	 * This number is needed to be added to the outline root pdf object.
+	*/
+	outlineRootCount: number 
+} {
     const outlineItems: outlineItem[] = [];
     const getIndexOfImmediateParent = getIndexOfImmediateParentFactory(parent);
     const outlineRootCount = calculateCount(outline, -1);

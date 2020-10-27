@@ -1,7 +1,8 @@
 import { IOutline } from "../common/types";
 
 /**
- * @description It throws if it does not exist
+ * @description It returns the index of the immediate next sibling for the specified outline node. 
+ * It throws if it does not exist.
  */
 export function getIndexOfImmediateNextSibling(outline: IOutline, i: number): number {
     const contextDepth = outline[i].depth;

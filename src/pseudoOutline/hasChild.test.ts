@@ -1,7 +1,7 @@
-import { printedToOutline } from "../printedToOutline/printedToOutline";
+import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { hasChild } from "./hasChild";
 
-describe(hasChild.name, () => {
+describe("hasChild(outline: IOutline, i: number)", () => {
     test.each([
 		[0, false],
 		[1, false],

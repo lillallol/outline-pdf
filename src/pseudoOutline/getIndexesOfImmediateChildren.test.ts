@@ -1,8 +1,8 @@
-import { printedToOutline } from "../printedToOutline/printedToOutline";
+import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { getIndexesOfImmediateChildren } from "./getIndexesOfImmediateChildren";
 
-describe(getIndexesOfImmediateChildren.name, () => {
-    it("works as expected", () => {
+describe("getIndexesOfImmediateChildren(outline: IOutline, i: number)", () => {
+    it("returns the indexes of the immediate children of the provided outline node", () => {
         expect(
             getIndexesOfImmediateChildren(
                 printedToOutline(`
@@ -19,7 +19,7 @@ describe(getIndexesOfImmediateChildren.name, () => {
             )
         ).toEqual([2, 7]);
     });
-    it("works as expected for i being -1", () => {
+    it("returns the indexes of the outline nodes with 0 depth for i being -1", () => {
         expect(
             getIndexesOfImmediateChildren(
                 printedToOutline(`

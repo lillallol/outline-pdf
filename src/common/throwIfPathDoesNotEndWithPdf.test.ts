@@ -1,6 +1,6 @@
 import { throwIfPathDoesNotEndWithPdf, _errorMessages } from "./throwIfPathDoesNotEndWithPdf";
 
-describe(throwIfPathDoesNotEndWithPdf.name, () => {
+describe("throwIfPathDoesNotEndWithPdf(path: string)", () => {
     it("throws error when the provided path does not end with .pdf", () => {
         const path = "./test";
         expect(() => throwIfPathDoesNotEndWithPdf(path)).toThrow(_errorMessages.pathDoesNotEndWithPdf(path));

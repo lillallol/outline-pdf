@@ -4,14 +4,13 @@
 	"description": "High level API to add outline to a pdf without any dependency on other programming languages.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"private": "false",
 	"scripts": {
 		"test": "jest",
 		"lint": "tsc --noEmit && eslint ./src/**/*.ts --max-warnings=0",
 		"build": "rm -rf ./dist && tsc -p ./tsconfig.build.json",
-		"spellcheck" : "cspell \"./**/*\"",
-		"prepublishOnly": "npm run spellcheck;npm run lint;npm run test;npm run build;",
-		"publish": "publish --access public"
+		"spell-check": "cspell \"./**/*\"",
+		"prepublishOnly": "npm run spell-check;npm run lint;npm run test;npm run build;",
+		"postpublish": "rm -rf ./dist"
 	},
 	"files": [
 		"dist"
@@ -38,6 +37,7 @@
 		"@typescript-eslint/parser": "^4.5.0",
 		"cspell": "^4.1.2",
 		"eslint": "^7.11.0",
+		"husky": "^4.3.0",
 		"jest": "^26.6.0",
 		"ts-jest": "^26.4.1",
 		"typescript": "^4.0.3"

@@ -1,5 +1,9 @@
 import { IOutline } from "../common/types";
 
+/**
+ * @description Returns the index of the last immediate child for the provided outline node.
+ * It throws if there is no child.
+ */
 export function getIndexOfLastImmediateChild(outline: IOutline, i: number): number {
     let candidateIndex;
     const parentDepth = outline[i].depth;

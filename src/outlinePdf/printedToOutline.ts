@@ -1,5 +1,3 @@
-import { throwWhenCollapsedWithoutChildren } from "./throwWhenCollapsedWithoutChildren";
-import { trimEachLine } from "./trimEachLine";
 import { IOutline, IOutlineNode } from "../common/types";
 
 /**
@@ -29,10 +27,11 @@ export function printedToOutline(inputOutline: string): IOutline {
     if (inputOutline.trim() === "") throw Error(_errorMessages.emptyOutline);
 
     let lastNode: IOutlineNode;
-    const toReturn: IOutline = trimEachLine(inputOutline)
+    const toReturn: IOutline = inputOutline
+        .trim()
         .split("\n")
-        .map((line, i) => {
-
+        .map((untrimmedLine, i) => {
+            const line = untrimmedLine.trim();
             // eslint-disable-next-line no-useless-escape
             const match = line.match(/^([+\-]?\d+)\|(-*)\|(.*)$/);
             if (match === null) throw Error(_errorMessages.wrongPatternInLine(line));
@@ -54,13 +53,17 @@ export function printedToOutline(inputOutline: string): IOutline {
                 if (nodeToReturn.pageNumber < lastNode.pageNumber) {
                     throw Error(_errorMessages.invalidDisplacementOfPage(lastNode.line, nodeToReturn.line));
                 }
+
+                if (lastNode.collapse && lastNode.depth >= nodeToReturn.depth) {
+                    throw Error(_errorMessages.nodeIsCollapsedWithoutChildren(lastNode.line));
+                }
             }
 
             lastNode = nodeToReturn;
             return nodeToReturn;
         });
 
-    throwWhenCollapsedWithoutChildren(toReturn);
+    // throwWhenCollapsedWithoutChildren(toReturn);
     return toReturn;
 }
 
@@ -80,4 +83,6 @@ ${newLine}
 	${oldLine}
 	${newLine}
 `.trim(),
+    nodeIsCollapsedWithoutChildren: (line: string): string =>
+        `Outline node : "${line}" has no children and it is collapsed. You have to un collapse it or add children.`,
 };

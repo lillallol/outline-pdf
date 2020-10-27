@@ -6,9 +6,61 @@ import { getPageRefs } from "../getPageRefs";
 import { readPdf } from "../../readPdf/readPdf";
 import { savePdf } from "../../savePdf/savePdf";
 import { pseudoOutline } from "../../pseudoOutline/pseudoOutline";
-import { printedToOutline } from "../../printedToOutline/printedToOutline";
+import { printedToOutline } from "../printedToOutline";
 
-export async function outlinePdf(_: { loadPath: string; savePath: string; outline: string }): Promise<void> {
+/**
+ * @description Adds outline to an outline-less pdf.
+ * @example
+ * (async () => {
+ *     await outlinePdf({
+ *         loadPath: "absolute/or/relative/path/to/pdf/to/outline.pdf",
+ *         savePath: "absolute/or/relative/path/to/save/outlined.pdf",
+ *         // first column  : page number
+ *         //                 negative for collapsing outline
+ *         // second column : outline depth
+ *         // third column  : outline title
+ *         outline: `
+ *               1||some title
+ *              12|-|some title
+ *             -30|--|some title
+ *              34|---|some title
+ *              35|---|some title
+ *              60|--|some title
+ *              67|-|some title
+ *              80||some title
+ *         `,
+ *     });
+ * })();
+*/
+export async function outlinePdf(_: {
+    /**
+     * @description Absolute or relative path to the outline-less pdf you want to add outline.
+     */
+    loadPath: string;
+    /**
+     * @description Absolute or relative path to where the newly created outlined pdf will be saved.
+     */
+    savePath: string;
+    /**
+     * @description A string representation of the outline.
+     * @example
+     * // first column  : page number
+     * //                 negative for collapsing outline
+     * // second column : outline depth
+     * // third column  : outline title
+     * `
+     * 	  1||some title
+     * 	 12|-|some title
+     * 	-30|--|some title
+     * 	 34|---|some title
+     * 	 35|---|some title
+     * 	 60|--|some title
+     * 	 67|-|some title
+     * 	 80||some title
+     * `
+     */
+    outline: string;
+}): Promise<void> {
     const { outline: inputOutline, loadPath: loadPath, savePath: savePath } = _;
     const outline = printedToOutline(inputOutline);
     const doc = await readPdf(loadPath);

@@ -1,8 +1,8 @@
-import { printedToOutline } from "../printedToOutline/printedToOutline";
+import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { getNumberOfDescendants } from "./getNumberOfDescendants";
 
-describe(getNumberOfDescendants.name, () => {
-    it("works as described by its name", () => {
+describe("getNumberOfDescendants(outline: IOutline, i: number)", () => {
+    it("returns the number of the descendant outline nodes of the provided outline node", () => {
         expect(
             getNumberOfDescendants(
                printedToOutline(`
