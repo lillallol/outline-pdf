@@ -5,14 +5,14 @@ import { IOutline, IOutlineNode } from "../common/types";
  * It throws if the outline string representation is not valid.
  * @example
  * //input
- * `
+ * printedToOutline(`
  * 	 1||Document
  * 	 2|-|Section 1
  * 	-3|-|Section 2
  * 	 4|--|Subsection 1
  * 	 5|-|Section 3
  * 	 6||Summary
- * `
+ * `,6)
  * //output
  * [
  * 	{ pageNumber: 1, depth: 0, title: "Document" , collapse : false , line : "1||Document"},
@@ -23,7 +23,7 @@ import { IOutline, IOutlineNode } from "../common/types";
  * 	{ pageNumber: 6, depth: 0, title: "Summary" , collapse : false , line : "6||Summary"},
  * ]
  */
-export function printedToOutline(inputOutline: string): IOutline {
+export function printedToOutline(inputOutline: string, totalNumberOfPages: number): IOutline {
     if (inputOutline.trim() === "") throw Error(_errorMessages.emptyOutline);
 
     let lastNode: IOutlineNode;
@@ -43,6 +43,9 @@ export function printedToOutline(inputOutline: string): IOutline {
                 collapse: Number(match[1]) < 0,
                 line: line,
             };
+            if (nodeToReturn.pageNumber === 0) throw Error(_errorMessages.zeroPageInOutlineIsNotAllowed(line));
+            if (nodeToReturn.pageNumber > totalNumberOfPages)
+                throw Error(_errorMessages.pageNumberInOutlineExceedsMaximum(line, totalNumberOfPages));
 
             if (i === 0 && nodeToReturn.depth !== 0) throw Error(_errorMessages.depthOfOutlineHasToStartWithZero);
             if (i !== 0) {
@@ -63,7 +66,6 @@ export function printedToOutline(inputOutline: string): IOutline {
             return nodeToReturn;
         });
 
-    // throwWhenCollapsedWithoutChildren(toReturn);
     return toReturn;
 }
 
@@ -75,6 +77,9 @@ Wrong depth displacement for the following part of the outline :
 ${oldLine}
 ${newLine}
 `.trim(),
+    zeroPageInOutlineIsNotAllowed: (line: string): string => `Zero page number is not allowed in outline : ${line}`,
+    pageNumberInOutlineExceedsMaximum: (line: string, max: number): string =>
+        `Pdf file has ${max} number of pages and outline points out of this range : ${line}`,
     depthOfOutlineHasToStartWithZero: `The outline should start with zero depth.`,
     wrongPatternInLine: (line: string): string => `The line "${line}" has wrong pattern.`,
     invalidDisplacementOfPage: (oldLine: string, newLine: string): string =>

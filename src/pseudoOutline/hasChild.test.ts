@@ -3,8 +3,8 @@ import { hasChild } from "./hasChild";
 
 describe("hasChild(outline: IOutline, i: number)", () => {
     test.each([
-		[0, false],
-		[1, false],
+        [0, false],
+        [1, false],
         [2, true],
         [3, true],
         [4, true],
@@ -16,7 +16,8 @@ describe("hasChild(outline: IOutline, i: number)", () => {
     ])("it works as expected", (i, predicate) => {
         expect(
             hasChild(
-				printedToOutline(`
+                printedToOutline(
+                    `
 					 1||my title 1
 					 2||my title 2
                      3||Title1
@@ -27,7 +28,9 @@ describe("hasChild(outline: IOutline, i: number)", () => {
                      8|-----|Title6
                      9|----|Title7
                     10|--|Title8
-                `),
+                `,
+                    10
+                ),
                 i
             )
         ).toBe(predicate);

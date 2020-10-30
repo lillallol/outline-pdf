@@ -4,14 +4,17 @@ import { calculateCount } from "./calculateCount";
 
 describe("calculateCount(outline: IOutline, i: number)", () => {
     it("mutates in place the provided outline by adding count to each node", () => {
-        const outline: IOutline = printedToOutline(`
+        const outline: IOutline = printedToOutline(
+            `
 			1||Document
 			2|-|Section 1
 	       -3|-|Section 2
 			4|--|Subsection 1
 			5|-|Section 3
 			6||Summary
-		`);
+		`,
+            6
+        );
         expect(calculateCount(outline, 0)).toBe(3);
         expect(outline).toEqual([
             {
@@ -64,14 +67,17 @@ describe("calculateCount(outline: IOutline, i: number)", () => {
         ]);
     });
     it("works for i being -1", () => {
-        const outline: IOutline = printedToOutline(`
+        const outline: IOutline = printedToOutline(
+            `
 			1||Document
 			2|-|Section 1
 	       -3|-|Section 2
 			4|--|Subsection 1
 			5|-|Section 3
 			6||Summary
-		`);
+		`,
+            6
+        );
         expect(calculateCount(outline, -1)).toBe(5);
         expect(outline).toEqual([
             {

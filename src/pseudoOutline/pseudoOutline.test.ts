@@ -8,14 +8,17 @@ describe("pseudoOutline(outline: IOutline,parent: PDFRef)", () => {
             const pdfRef = PDFRef.of(-100);
             expect(
                 pseudoOutline(
-                    printedToOutline(`
+                    printedToOutline(
+                        `
                     1||Document
                     2|-|Section 1
                    	3|-|Section 2
                     4|--|Subsection 1
                     5|-|Section 3
                     6||Summary
-                `),
+                `,
+                        6
+                    ),
                     pdfRef
                 )
             ).toEqual({
@@ -70,14 +73,17 @@ describe("pseudoOutline(outline: IOutline,parent: PDFRef)", () => {
             const pdfRef = PDFRef.of(-100);
             expect(
                 pseudoOutline(
-                    printedToOutline(`
+                    printedToOutline(
+                        `
                     1||Document
                     2|-|Section 1
                    -3|-|Section 2
                     4|--|Subsection 1
                     5|-|Section 3
                     6||Summary
-                `),
+                `,
+                        6
+                    ),
                     pdfRef
                 )
             ).toEqual({

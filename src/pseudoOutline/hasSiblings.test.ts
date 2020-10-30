@@ -23,7 +23,7 @@ describe("hasSiblings(outline: IOutline, i: number)", () => {
 					6|-----|Title6
 					7|----|Title7
 					8|--|Title8
-				`),
+				`,8),
                 i
             )
         ).toBe(predicate);

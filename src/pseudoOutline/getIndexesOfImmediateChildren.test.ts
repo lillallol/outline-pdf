@@ -5,7 +5,8 @@ describe("getIndexesOfImmediateChildren(outline: IOutline, i: number)", () => {
     it("returns the indexes of the immediate children of the provided outline node", () => {
         expect(
             getIndexesOfImmediateChildren(
-                printedToOutline(`
+                printedToOutline(
+                    `
                     1||Title1
                     2|-|Title2
                     3|--|Title3
@@ -14,7 +15,9 @@ describe("getIndexesOfImmediateChildren(outline: IOutline, i: number)", () => {
                     6|-----|Title6
                     7|----|Title7
                     8|--|Title8
-                `),
+                `,
+                    8
+                ),
                 1
             )
         ).toEqual([2, 7]);
@@ -22,7 +25,8 @@ describe("getIndexesOfImmediateChildren(outline: IOutline, i: number)", () => {
     it("returns the indexes of the outline nodes with 0 depth for i being -1", () => {
         expect(
             getIndexesOfImmediateChildren(
-                printedToOutline(`
+                printedToOutline(
+                    `
                     1||Title1
                     2||Title2
                     3|-|Title3
@@ -31,7 +35,9 @@ describe("getIndexesOfImmediateChildren(outline: IOutline, i: number)", () => {
                     6|----|Title6
                     7||Title7
                     8|-|Title8
-                `),
+                `,
+                    8
+                ),
                 -1
             )
         ).toEqual([0, 1, 6]);

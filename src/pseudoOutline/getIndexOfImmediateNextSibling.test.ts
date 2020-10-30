@@ -5,7 +5,8 @@ describe("getIndexOfImmediateNextSibling(outline: IOutline, i: number)", () => {
     it("returns the index of the immediate next sibling of the provided outline node", () => {
         expect(
             getIndexOfImmediateNextSibling(
-                printedToOutline(`
+                printedToOutline(
+                    `
                     1||Title1
                     2|-|Title2
                     3|--|Title3
@@ -14,7 +15,9 @@ describe("getIndexOfImmediateNextSibling(outline: IOutline, i: number)", () => {
                     6|-----|Title6
                     7|----|Title7
                     8|--|Title8
-               `),
+               `,
+                    8
+                ),
                 4
             )
         ).toBe(6);
@@ -23,7 +26,8 @@ describe("getIndexOfImmediateNextSibling(outline: IOutline, i: number)", () => {
         const i = 5;
         expect(() =>
             getIndexOfImmediateNextSibling(
-                printedToOutline(`
+                printedToOutline(
+                    `
                     1||Title1
                     2|-|Title2
                     3|--|Title3
@@ -32,7 +36,9 @@ describe("getIndexOfImmediateNextSibling(outline: IOutline, i: number)", () => {
                     6|-----|Title6
                     7|----|Title7
                     8|--|Title8
-               `),
+               `,
+                    8
+                ),
                 i
             )
         ).toThrow(_errorMessages.noImmediateNextSiblingForTheGivenIndex(i));

@@ -5,7 +5,8 @@ describe("getNumberOfDescendants(outline: IOutline, i: number)", () => {
     it("returns the number of the descendant outline nodes of the provided outline node", () => {
         expect(
             getNumberOfDescendants(
-               printedToOutline(`
+                printedToOutline(
+                    `
                     1||Title1
                     2|-|Title2
                     3|--|Title3
@@ -14,7 +15,9 @@ describe("getNumberOfDescendants(outline: IOutline, i: number)", () => {
                     6|-----|Title6
                     7|----|Title7
                     8|--|Title8
-                `),
+                `,
+                    8
+                ),
                 2
             )
         ).toBe(4);

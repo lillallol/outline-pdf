@@ -14,7 +14,8 @@ describe("hasImmediatePreviousSibling(outline: IOutline, i: number)", () => {
     ])("returns a predicate on whether the provided node has an immediate previous sibling", (i, predicate) => {
         expect(
             hasImmediatePreviousSibling(
-                printedToOutline(`
+                printedToOutline(
+                    `
 					1||Title1
 					2|-|Title2
 					3|--|Title3
@@ -23,7 +24,9 @@ describe("hasImmediatePreviousSibling(outline: IOutline, i: number)", () => {
 					6|-----|Title6
 					7|----|Title7
 					8|--|Title8
-				`),
+				`,
+                    8
+                ),
                 i
             )
         ).toBe(predicate);

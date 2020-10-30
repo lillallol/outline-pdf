@@ -5,7 +5,8 @@ describe("getIndexOfImmediatePreviousSibling(outline: IOutline, i: number)", () 
     it("works as described by its name", () => {
         expect(
             getIndexOfImmediatePreviousSibling(
-                printedToOutline(`
+                printedToOutline(
+                    `
                     1||Title1
                     2|-|Title2
                     3|--|Title3
@@ -14,7 +15,9 @@ describe("getIndexOfImmediatePreviousSibling(outline: IOutline, i: number)", () 
                     6|-----|Title6
                     7|----|Title7
                     8|--|Title8
-                `),
+                `,
+                    8
+                ),
                 6
             )
         ).toBe(4);
@@ -23,7 +26,8 @@ describe("getIndexOfImmediatePreviousSibling(outline: IOutline, i: number)", () 
         const i = 1;
         expect(() =>
             getIndexOfImmediatePreviousSibling(
-                printedToOutline(`
+                printedToOutline(
+                    `
                     1||Title1
                     2|-|Title2
                     3|--|Title3
@@ -32,7 +36,9 @@ describe("getIndexOfImmediatePreviousSibling(outline: IOutline, i: number)", () 
                     6|-----|Title6
                     7|----|Title7
                     8|--|Title8
-                `),
+                `,
+                    8
+                ),
                 i
             )
         ).toThrow(_errorMessages.thereIsNoImmediatePreviousSibling(i));

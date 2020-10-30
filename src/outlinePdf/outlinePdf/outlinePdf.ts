@@ -61,12 +61,13 @@ export async function outlinePdf(_: {
      */
     outline: string;
 }): Promise<void> {
-    const { outline: inputOutline, loadPath: loadPath, savePath: savePath } = _;
-    const outline = printedToOutline(inputOutline);
+	const { outline: inputOutline, loadPath: loadPath, savePath: savePath } = _;
+	
+    
     const doc = await readPdf(loadPath);
 
     const pageRefs = getPageRefs(doc);
-
+	const outline = printedToOutline(inputOutline,pageRefs.length);
     const outlinesDictRef = doc.context.nextRef();
     //Pointing the "Outlines" property of the PDF "Catalog" to the first object of your outlines
     doc.catalog.set(PDFName.of("Outlines"), outlinesDictRef);
