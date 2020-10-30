@@ -1,6 +1,6 @@
 {
 	"name": "@lillallol/outline-pdf",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "High level API to add outline to a pdf without any dependency on other programming languages.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -9,13 +9,12 @@
 		"lint": "tsc --noEmit && eslint ./src/**/*.ts --max-warnings=0",
 		"test": "jest",
 		"build": "rm -rf ./dist && tsc -p ./tsconfig.build.json",
-		
-		"pre-bump" : "rm -rf ./dist && npm run spell-check && npm run lint && npm run test && npm run build && git add --all && git commit",
-		"release" : "npm run pre-bump && npm publish --access public && npm run after-bump",
-		"bump-patch" : "npm run pre-bump && npm version patch && npm publish && npm run after-bump",
-		"bump-minor" : "npm run pre-bump && npm version minor && npm publish && npm run after-bump",
-		"bump-major" : "npm run pre-bump && npm version major && npm publish && npm run after-bump",
-		"after-bump" : "git push origin master && rm -rf ./dist"
+		"pre-bump": "rm -rf ./dist && npm run spell-check && npm run lint && npm run test && npm run build && git add --all && git commit",
+		"release": "npm run pre-bump && npm publish --access public && npm run after-bump",
+		"bump-patch": "npm run pre-bump && npm version patch && npm publish && npm run after-bump",
+		"bump-minor": "npm run pre-bump && npm version minor && npm publish && npm run after-bump",
+		"bump-major": "npm run pre-bump && npm version major && npm publish && npm run after-bump",
+		"after-bump": "git push origin master && rm -rf ./dist"
 	},
 	"files": [
 		"dist"
