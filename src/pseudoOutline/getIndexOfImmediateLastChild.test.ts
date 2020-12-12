@@ -1,7 +1,7 @@
 import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { getIndexOfLastImmediateChild } from "./getIndexOfImmediateLastChild";
 
-describe("getIndexOfLastImmediateChild(outline: IOutline, i: number)", () => {
+describe(getIndexOfLastImmediateChild.name, () => {
     it.each([
         [1, 4],
         [0, 5],

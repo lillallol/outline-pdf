@@ -1,4 +1,4 @@
-import { IOutline } from "../common/types";
+import { IOutline } from "../types";
 
 /**
  * @description It returns the index of the immediate next sibling for the specified outline node. 

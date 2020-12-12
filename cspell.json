@@ -1,7 +1,8 @@
 {
 	"language": "en",
-	"ignorePaths": ["dist/**","node_modules/**","./**/*.pdf","package-lock.json","jest.config.js"],
+	"ignorePaths": ["dist/**","node_modules/**","./**/*.pdf","package-lock.json","jest.config.js","coverage/**"],
 	"words": [
-		"lillallol"
+        "lillallol",
+        "unimported"
 	]
 }

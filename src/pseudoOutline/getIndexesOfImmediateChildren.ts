@@ -1,4 +1,4 @@
-import { IOutline } from "../common/types";
+import { IOutline } from "../types";
 
 /**
  * @description Returns the indexes that correspond to the immediate children of the specified outline node.

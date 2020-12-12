@@ -2,7 +2,7 @@ import { PDFRef } from "pdf-lib";
 import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { getIndexOfImmediateParentFactory } from "./getIndexOfImmediateParentFactory";
 
-describe("getIndexOfImmediateParentFactory(v: PDFRef)", () => {
+describe(getIndexOfImmediateParentFactory.name, () => {
     let getIndexOfImmediateParent: ReturnType<typeof getIndexOfImmediateParentFactory>;
     let pdfRef: PDFRef;
     beforeEach(() => {

@@ -1,4 +1,4 @@
-import { IOutline, IOutlineNode } from "../common/types";
+import { IOutline, IOutlineNode } from "../types";
 
 /**
  * @description Converts the outline string representation to its programmatic representation.

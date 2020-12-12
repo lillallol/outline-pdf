@@ -1,0 +1,13 @@
+{
+    "entry": [
+        "src/index.ts"
+    ],
+    "ignoreUnused": [
+        "@types/node"
+    ],
+    "ignorePatterns": [
+        "**/node_modules/**",
+        "**/*.test.ts",
+        "**/src/index.ts"
+    ]
+}

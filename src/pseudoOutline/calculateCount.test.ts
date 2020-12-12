@@ -1,8 +1,8 @@
 import { printedToOutline } from "../outlinePdf/printedToOutline";
-import { IOutline } from "../common/types";
+import { IOutline } from "../types";
 import { calculateCount } from "./calculateCount";
 
-describe("calculateCount(outline: IOutline, i: number)", () => {
+describe(calculateCount.name, () => {
     it("mutates in place the provided outline by adding count to each node", () => {
         const outline: IOutline = printedToOutline(
             `

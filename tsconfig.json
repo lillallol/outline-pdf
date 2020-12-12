@@ -8,8 +8,8 @@
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"target": "ESNext",
-		"declaration": true,
-		"module": "CommonJS",
+        "declaration": true,
+        "module": "CommonJS"
 	},
 	"include": [
 		"./src/**/*.ts",

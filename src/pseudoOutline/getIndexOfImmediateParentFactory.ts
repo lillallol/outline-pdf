@@ -1,5 +1,5 @@
 import type { PDFRef } from "pdf-lib";
-import type { IOutline } from "../common/types";
+import type { IOutline } from "../types";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function getIndexOfImmediateParentFactory(v: PDFRef) {

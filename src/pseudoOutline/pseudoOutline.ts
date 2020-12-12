@@ -8,7 +8,7 @@ import { hasImmediateNextSibling } from "./hasImmediateNextSibling";
 import { getIndexOfImmediateParentFactory } from "./getIndexOfImmediateParentFactory";
 import { calculateCount } from "./calculateCount";
 
-import type { IOutline } from "../common/types";
+import type { IOutline } from "../types";
 import type { PDFRef } from "pdf-lib";
 
 type outlineItem = {

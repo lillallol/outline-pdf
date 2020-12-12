@@ -1,4 +1,4 @@
-import { IOutline } from "../common/types";
+import { IOutline } from "../types";
 
 /**
  * @description Returns the index of the last immediate child for the provided outline node.

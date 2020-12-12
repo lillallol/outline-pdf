@@ -1,15 +1,21 @@
 {
 	"name": "@lillallol/outline-pdf",
 	"version": "1.0.2",
-	"description": "High level API to add outline to a pdf without any dependency on other programming languages.",
+	"description": "High level API to add outline to a pdf without any dependency on other programming languages. Works in both browser and node.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"module": "./dist/index.esm.js",
+	"type": "commonjs",
 	"scripts": {
+		"start": "http-server -p 8080 -c-1",
+		"dead-files": "unimported",
 		"spell-check": "cspell \"./**/*\"",
 		"lint": "tsc --noEmit && eslint ./src/**/*.ts --max-warnings=0",
-		"test": "jest",
-		"build": "rm -rf ./dist && tsc -p ./tsconfig.build.json",
-		"pre-bump": "rm -rf ./dist && npm run spell-check && npm run lint && npm run test && npm run build && git add --all && git commit",
+		"test": "rm -rf ./coverage && npx jest --clearCache && npx jest ./src --coverage --silent",
+		"build-cjs": "tsc -p ./tsconfig.build.json",
+		"build-esm": "rollup -c rollup.config.js",
+		"build": "rm -rf ./dist && npm run build-cjs && npm run build-esm",
+		"pre-bump": "npm run dead-files && npm run spell-check && npm run lint && npm run test && npm run build && git add --all && git commit",
 		"release": "npm run pre-bump && npm publish --access public && npm run after-bump",
 		"bump-patch": "npm run pre-bump && npm version patch && npm publish && npm run after-bump",
 		"bump-minor": "npm run pre-bump && npm version minor && npm publish && npm run after-bump",
@@ -31,22 +37,28 @@
 		"collapse",
 		"expand",
 		"high level API",
-		"native"
+		"native",
+		"browser",
+		"node"
 	],
 	"author": "lillallol",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/node": "^14.14.0",
+		"@rollup/plugin-commonjs": "12.0.0",
 		"@typescript-eslint/eslint-plugin": "^4.5.0",
 		"@typescript-eslint/parser": "^4.5.0",
 		"cspell": "^4.1.2",
 		"eslint": "^7.11.0",
-		"husky": "^4.3.0",
+		"http-server": "^0.12.3",
 		"jest": "^26.6.0",
+		"rollup": "^2.34.2",
+		"rollup-plugin-dts": "^2.0.1",
 		"ts-jest": "^26.4.1",
-		"typescript": "^4.0.3"
+		"typescript": "^4.0.3",
+		"unimported": "^1.5.0"
 	},
 	"dependencies": {
+		"@types/node": "^14.14.12",
 		"pdf-lib": "^1.11.2"
 	},
 	"bugs": {

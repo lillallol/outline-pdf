@@ -1,7 +1,7 @@
 import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { getIndexOfImmediateNextSibling, _errorMessages } from "./getIndexOfImmediateNextSibling";
 
-describe("getIndexOfImmediateNextSibling(outline: IOutline, i: number)", () => {
+describe(getIndexOfImmediateNextSibling.name, () => {
     it("returns the index of the immediate next sibling of the provided outline node", () => {
         expect(
             getIndexOfImmediateNextSibling(

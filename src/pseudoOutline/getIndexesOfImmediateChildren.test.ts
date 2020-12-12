@@ -1,7 +1,7 @@
 import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { getIndexesOfImmediateChildren } from "./getIndexesOfImmediateChildren";
 
-describe("getIndexesOfImmediateChildren(outline: IOutline, i: number)", () => {
+describe(getIndexesOfImmediateChildren.name, () => {
     it("returns the indexes of the immediate children of the provided outline node", () => {
         expect(
             getIndexesOfImmediateChildren(

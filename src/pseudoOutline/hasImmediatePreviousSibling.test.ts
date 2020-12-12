@@ -1,7 +1,7 @@
 import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { hasImmediatePreviousSibling } from "./hasImmediatePreviousSibling";
 
-describe("hasImmediatePreviousSibling(outline: IOutline, i: number)", () => {
+describe(hasImmediatePreviousSibling.name, () => {
     it.each([
         [0, false],
         [1, false],

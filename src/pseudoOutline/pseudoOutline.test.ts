@@ -2,7 +2,7 @@ import { PDFRef } from "pdf-lib";
 import { printedToOutline } from "../outlinePdf/printedToOutline";
 import { pseudoOutline } from "./pseudoOutline";
 
-describe("pseudoOutline(outline: IOutline,parent: PDFRef)", () => {
+describe(pseudoOutline.name, () => {
     describe("returns low level information about the provided outline", () => {
         it("works for outline without collapsed parts", () => {
             const pdfRef = PDFRef.of(-100);

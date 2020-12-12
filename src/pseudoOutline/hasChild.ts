@@ -1,4 +1,4 @@
-import { IOutline } from "../common/types";
+import { IOutline } from "../types";
 
 /**
  * @description Returns a predicate on whether the provided outline node has a child.

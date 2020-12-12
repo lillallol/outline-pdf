@@ -1,4 +1,4 @@
-import { IOutline } from "../common/types";
+import { IOutline } from "../types";
 import { getIndexesOfImmediateChildren } from "./getIndexesOfImmediateChildren";
 import { hasChild } from "./hasChild";
 /**
