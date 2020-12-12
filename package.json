@@ -1,6 +1,6 @@
 {
 	"name": "@lillallol/outline-pdf",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "High level API to add outline to a pdf without any dependency on other programming languages. Works in both browser and node.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
