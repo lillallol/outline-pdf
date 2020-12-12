@@ -1,15 +1,15 @@
 ## Table of contents
 
--   [Description](#Description)
--   [Installation](#Installation)
--   [Examples](#Examples)
-    -   [Node](#Node)
-    -   [Browser](#Browser)
--   [Dependencies](#Dependencies)
--   [Motivation](#Motivation)
--   [You might find interesting](#You-might-find-interesting)
--   [Acknowledgments](#Acknowledgments)
--   [License](#License)
+-   [Description](#description)
+-   [Installation](#installation)
+-   [Examples](#examples)
+    -   [Node](#node)
+    -   [Browser](#browser)
+-   [Dependencies](#dependencies)
+-   [Motivation](#motivation)
+-   [You might find interesting](#you-might-find-interesting)
+-   [Acknowledgments](#acknowledgments)
+-   [License](#license)
 
 ## Description
 
