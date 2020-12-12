@@ -122,7 +122,7 @@ function download(data, filename, type) {
 
 For this package to give proper intellisense it uses types from [pdf-lib](https://www.npmjs.com/package/pdf-lib) and [@types/nodes](https://www.npmjs.com/package/@types/node). 
 
-You will have to manually inject [pdf-lib](https://www.npmjs.com/package/pdf-lib), and [fs](https://nodejs.org/api/fs.html) (only when used in node), in the exported factories of the package, like its is done in the [examples](#Examples).
+You will have to manually inject [pdf-lib](https://www.npmjs.com/package/pdf-lib), and [fs](https://nodejs.org/api/fs.html) (only when used in node), in the exported factories of the package, like its is done in the [examples](#examples).
 
 So you will need to install [pdf-lib](https://www.npmjs.com/package/pdf-lib):
 
@@ -132,7 +132,7 @@ npm install pdf-lib;
 
 ## Motivation
 
-I searched in the npm registry for a module that has the functionality described [here](#Description), because I had to use it in one of my projects <!-- ([documentation-to-pdf](@TODO)) -->, and I could not find one, so I decided to create my own.
+I searched in the npm registry for a module that has the functionality described [here](#description), because I had to use it in one of my projects <!-- ([documentation-to-pdf](@TODO)) -->, and I could not find one, so I decided to create my own.
 
 ## You might find interesting
 
