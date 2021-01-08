@@ -3,6 +3,7 @@
 	"ignorePaths": ["dist/**","node_modules/**","./**/*.pdf","package-lock.json","jest.config.js","coverage/**"],
 	"words": [
         "lillallol",
-        "unimported"
+        "unimported",
+        "ecmascript"
 	]
 }

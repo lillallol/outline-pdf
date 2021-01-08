@@ -2,7 +2,7 @@ import type {
     PDFDocument,
     PDFNumber,
     PDFRef,
-    PDFString,
+    PDFHexString,
     PDFArray,
     PDFName as _PDFName,
     PDFDict as _PDFDict,
@@ -14,7 +14,7 @@ export function createOutlineNodeFactory(_: { PDFName: typeof _PDFName; PDFDict:
     return function createOutlineNode(
         doc: PDFDocument,
         _: {
-            Title: PDFString;
+            Title: PDFHexString;
             Parent: PDFRef;
             Prev?: PDFRef;
             Next?: PDFRef;

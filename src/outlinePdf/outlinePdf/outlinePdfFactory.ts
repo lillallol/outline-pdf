@@ -3,11 +3,11 @@ import type {
     PDFName as _PDFName,
     PDFNumber as _PDFNumber,
     PDFRef as _PDFRef,
-    PDFString as _PDFString,
     PDFArray as _PDFArray,
     PDFNull as _PDFNull,
     PDFDocument as _PDFDocument,
     PDFPageLeaf as _PDFPageLeaf,
+    PDFHexString as _PDFHexString,
 } from "pdf-lib";
 import { createOutlineDictFactory } from "../createOutlineDictFactory";
 import { createOutlineNodeFactory } from "../createOutlineNodeFactory";
@@ -57,13 +57,13 @@ export function outlinePdfFactory(_: {
     PDFName: typeof _PDFName;
     PDFNumber: typeof _PDFNumber;
     PDFRef: typeof _PDFRef;
-    PDFString: typeof _PDFString;
     PDFArray: typeof _PDFArray;
     PDFNull: typeof _PDFNull;
     PDFDocument: typeof _PDFDocument;
     PDFPageLeaf: typeof _PDFPageLeaf;
+    PDFHexString: typeof _PDFHexString;
 }): IOutlinePdf {
-    const { PDFArray, PDFDocument, PDFName, PDFNull, PDFNumber, PDFString } = _;
+    const { PDFArray, PDFDocument, PDFName, PDFNull, PDFNumber, PDFHexString } = _;
 
     const getPageRefs = getPageRefsFactory(_);
     const createOutlineNode = createOutlineNodeFactory(_);
@@ -110,7 +110,7 @@ export function outlinePdfFactory(_: {
             for (let i = 0; i < outline.length; i++) {
                 const { Title, Dest, Parent, Count, First, Last, Next, Prev } = pseudoOutlineItems[i];
                 outlineItem[i] = createOutlineNode(doc, {
-                    Title: PDFString.of(Title),
+                    Title: PDFHexString.fromText(Title),
                     Parent: typeof Parent === "number" ? outlineItemRef[Parent] : Parent,
                     ...(Prev !== undefined && {
                         Prev: outlineItemRef[Prev],
@@ -152,7 +152,7 @@ export function outlinePdfFactory(_: {
 }
 
 export const _errorMessages = {
-    thereIsNoPdfToSave : "There is no pdf to save.",
-    thereIsNoOutlineToGet :"There is not outline to get.",
-    thereIsNoPdfToAddOutline : "There is no pdf to add outline."
-}
+    thereIsNoPdfToSave: "There is no pdf to save.",
+    thereIsNoOutlineToGet: "There is not outline to get.",
+    thereIsNoPdfToAddOutline: "There is no pdf to add outline.",
+};

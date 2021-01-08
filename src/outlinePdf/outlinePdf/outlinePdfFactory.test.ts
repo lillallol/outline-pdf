@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import * as path from "path";
-import { IOutlinePdf, outlinePdfFactory, _errorMessages } from "./outlinePdfFactory";
 import * as pdfLib from "pdf-lib";
+import { outlinePdfFactory, _errorMessages, IOutlinePdf } from "./outlinePdfFactory";
 
 let outlinedPdfFileName: string;
-let outlinePdf : IOutlinePdf;
+let outlinePdf: IOutlinePdf;
 
 beforeAll(() => {
     outlinedPdfFileName = "test.outline.pdf";
@@ -17,7 +17,7 @@ beforeAll(() => {
 
 beforeEach(() => {
     outlinePdf = outlinePdfFactory(pdfLib);
-})
+});
 
 jest.setTimeout(60 * 1e3);
 
@@ -33,16 +33,16 @@ describe(outlinePdfFactory.name, () => {
         outlinePdf.loadPdf(fs.readFileSync(path.resolve(__dirname, "test.pdf")));
         expect(() => outlinePdf.applyOutlineToPdf()).toThrow(_errorMessages.thereIsNoPdfToAddOutline);
     });
-    it("works as expected", async () => {
+    it("adds the provided outline to the loaded pdf", async () => {
         await outlinePdf.loadPdf(fs.readFileSync(path.resolve(__dirname, "test.pdf")));
         outlinePdf.outline = `
-             1||Page 1
-             2|-|Page 2
-            -3|--|Page 3
-             4|---|Page 4
-             5|---|Page 5
-             6|-|Page 6
-             7||Page 7
+            1||Some random title 1
+            2|-|Some random title 2
+           -3|--|Some random title 3
+            4|---|Some random title 4
+            5|---|Some random title 5
+            6|-|Some random title 6
+            7||Some random title 7
         `;
         outlinePdf.applyOutlineToPdf();
         fs.writeFileSync(path.resolve(__dirname, outlinedPdfFileName), await outlinePdf.savePdf());

@@ -23,13 +23,13 @@ describe(outlinePdfCjsFactory.name, () => {
             loadPath: path.resolve(path.resolve(__dirname, "test.pdf")),
             savePath: path.resolve(path.resolve(__dirname, outlinedPdfFileName)),
             outline: `
-				 1||Title 1
-				 2|-|Title 2
-				-3|--|Title 3
-				 4|---|Title 4
-				 5|---|Title 5
-				 6|-|Title 6
-				 7||Title 7
+                1||Ω 1
+                2|-|Some random title 2
+               -3|--|Some random title 3
+                4|---|Some random title 4
+                5|---|Some random title 5
+                6|-|Some random title 6
+                7||Some random title 7
 			`,
         });
         //@TODO this test just checks whether the function produces a new pdf

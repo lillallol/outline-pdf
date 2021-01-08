@@ -10,7 +10,7 @@ import type {
     PDFNumber as _PDFNumber,
     PDFPageLeaf as _PDFPageLeaf,
     PDFRef as _PDFRef,
-    PDFString as _PDFString,
+    PDFHexString as _PDFHexString,
 } from "pdf-lib";
 
 import { outlinePdfFactory } from "../../outlinePdf/outlinePdf/outlinePdfFactory";
@@ -34,7 +34,7 @@ export function outlinePdfCjsFactory(
         PDFNumber: typeof _PDFNumber;
         PDFPageLeaf: typeof _PDFPageLeaf;
         PDFRef: typeof _PDFRef;
-        PDFString: typeof _PDFString;
+        PDFHexString: typeof _PDFHexString;
     }
 ) {
     /**

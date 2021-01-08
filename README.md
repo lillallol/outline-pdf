@@ -9,19 +9,19 @@
 -   [Motivation](#motivation)
 -   [You might find interesting](#you-might-find-interesting)
 -   [Acknowledgments](#acknowledgments)
+-   [Future plans](#future-plans)
+-   [FAQs](#faqs)
 -   [License](#license)
 
 ## Description
 
-This module can add outline to an outline-less pdf.
+This module can add outline to pdf that do not have one. As of right now, it is the only module in the npm registry that has the following characteristics :
 
--   only javascript dependencies
--   option for collapsing the outline
--   outline can be nested
--   fast download from npm
--   high level API
--   works in browser
--   works in node
+-   Only javascript dependencies. No code from other programming languages is used.
+-   Enables collapsing and nesting in the outline.
+-   Fast download from the npm registry.
+-   High level API.
+-   Works in both the browser and node.
 
 ## Installation
 
@@ -63,7 +63,7 @@ const outlinePdfCjs = outlinePdfCjsFactory(fs, pdfLib);
 
 ### Browser
 
-An example of loading a pdf file from the browser. The pdf is loaded via an input tag of type file. After the outline has been applied, the pdf gets downloaded.
+An example of loading a pdf file from the browser via an input tag of type file. After the outline has been applied, the pdf gets downloaded.
 
 ```ts
 import { outlinePdfFactory } from "path/to/node_modules/@lillallol/outline-pdf/dist/index.esm.js";
@@ -120,9 +120,7 @@ function download(data, filename, type) {
 
 ## Dependencies
 
-For this package to give proper intellisense it uses types from [pdf-lib](https://www.npmjs.com/package/pdf-lib) and [@types/nodes](https://www.npmjs.com/package/@types/node). 
-
-You will have to manually inject [pdf-lib](https://www.npmjs.com/package/pdf-lib), and [fs](https://nodejs.org/api/fs.html) (only when used in node), in the exported factories of the package, like its is done in the [examples](#examples).
+You will have to manually inject [pdf-lib](https://www.npmjs.com/package/pdf-lib), and [fs](https://nodejs.org/api/fs.html) (only when used in node), like its is done in the [examples](#examples).
 
 So you will need to install [pdf-lib](https://www.npmjs.com/package/pdf-lib):
 
@@ -132,20 +130,18 @@ npm install pdf-lib;
 
 ## Motivation
 
-I searched in the npm registry for a module that has the functionality described [here](#description), because I had to use it in one of my projects <!-- ([documentation-to-pdf](@TODO)) -->, and I could not find one, so I decided to create my own.
+I searched in the npm registry for a module that had some of the functionalities described [here](#description), because I had to use it in one of my projects <!-- ([documentation-to-pdf](@TODO)) -->.I could not find one, so I decided to create my own.
 
 ## You might find interesting
 
-Here are some other modules that deal with creating pdf outline and you might find them interesting :
+Here are some other modules that deal with outlining pdf :
 
 -   [pdf-lib](https://www.npmjs.com/package/pdf-lib)
-    -   low level pdf library for both browser and nodejs that has to be injected into my package exported factories.
-    - consider taking a look at it since high level api functionality for outline might have been added 
+    -   low level pdf library for both browser and node
 -   [hummus-toc](https://www.npmjs.com/package/@ocelot-consulting/hummus-toc)
-    -   uses [hummus](https://www.npmjs.com/package/hummus)
-        -   takes a lot of time to download
-        -   deprecated
+    -   uses [hummus](https://www.npmjs.com/package/hummus) which is deprecated
     -   only javascript dependencies
+    -   takes a lot of time to download
 -   [pdfjs](https://www.npmjs.com/package/pdfjs)
     -   look at the tests folder for an outline example
     -   only javascript dependencies
@@ -154,6 +150,29 @@ Here are some other modules that deal with creating pdf outline and you might fi
 ## Acknowledgments
 
 The following comments : [1](https://github.com/Hopding/pdf-lib/issues/127#issuecomment-502450179) , [2](https://github.com/Hopding/pdf-lib/issues/127#issuecomment-641710694) , contributed tremendously in the creation of this module.
+
+## Future plans
+
+Add functionality that enables someone to :
+
+-   read the outline of a pdf
+-   delete the outline of a pdf
+
+After that I will update [merge-pdf](https://www.npmjs.com/package/@lillallol/merge-pdf), so that it preserves outlines.
+
+## FAQs
+
+<details>
+<summary>Why does the consumer have to inject <code>pdf-lib</code> to use this module.</summary>
+
+No <code>pdf-lib</code> code is hard coded in this module. When someone wants to use this module and also use <code>pdf-lib</code>, to create a new module, there will be no <code>pdf-lib</code> code repeated in the generated bundle (remember that this module can be used in both node and browser).
+</details>
+
+<details>
+<summary>Why does the consumer have to inject <code>fs</code>, if they want to use this module in node?</summary>
+
+Like this the code of this module is compatible with every environment that supports ecmascript.
+</details>
 
 ## License
 
