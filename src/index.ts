@@ -1,2 +1,2 @@
-export {outlinePdfFactory} from "./outlinePdf/outlinePdf/outlinePdfFactory";
-export {outlinePdfCjsFactory} from "./outlinePdfCjs/outlinePdfCjs/outlinePdfCjsFactory";
+export { outlinePdfFactory } from "./outlinePdf/outlinePdfFactory";
+export { outlinePdfCjsFactory } from "./outlinePdfCjs/outlinePdfCjsFactory";

@@ -9,12 +9,10 @@ import type {
     PDFPageLeaf as _PDFPageLeaf,
     PDFHexString as _PDFHexString,
 } from "pdf-lib";
-import { createOutlineDictFactory } from "../createOutlineDictFactory";
-import { createOutlineNodeFactory } from "../createOutlineNodeFactory";
-import { getPageRefsFactory } from "../getPageRefsFactory";
-
-import { pseudoOutline } from "../../pseudoOutline/pseudoOutline";
-import { printedToOutline } from "../printedToOutline";
+import { createOutlineDictFactory } from "./createOutlineDictFactory";
+import { createOutlineNodeFactory } from "./createOutlineNodeFactory";
+import { getPageRefsFactory } from "./getPageRefsFactory";
+import { outlinePdfDataStructure } from "@lillallol/outline-pdf-data-structure";
 
 export type IOutlinePdf = {
     _pdfDocument?: _PDFDocument;
@@ -90,28 +88,31 @@ export function outlinePdfFactory(_: {
         applyOutlineToPdf(): void {
             const { outline: inputOutline, _pdfDocument: doc } = this;
             if (doc === undefined) throw Error(_errorMessages.thereIsNoPdfToAddOutline);
-            // const { outline: inputOutline, pdf: doc } = _;
+
             const pageRefs = getPageRefs(doc);
-            const outline = printedToOutline(inputOutline, pageRefs.length);
-            const outlinesDictRef = doc.context.nextRef();
+            const pageRefsLength = pageRefs.length;
+            const outlineRootRef = doc.context.nextRef();
             //Pointing the "Outlines" property of the PDF "Catalog" to the first object of your outlines
-            doc.catalog.set(PDFName.of("Outlines"), outlinesDictRef);
+            doc.catalog.set(PDFName.of("Outlines"), outlineRootRef);
 
             const outlineItemRef: _PDFRef[] = [];
             const outlineItem: _PDFDict[] = [];
 
-            outline.forEach(() => {
+            for (let i = 0; i < pageRefsLength; i++) {
                 outlineItemRef.push(doc.context.nextRef());
-            });
+            }
 
-            const currentParentRef = outlinesDictRef;
-            const { outlineItems: pseudoOutlineItems, outlineRootCount } = pseudoOutline(outline, currentParentRef);
+            // const outlineRootRef = outlinesDictRef;
+            const { outlineItems: pseudoOutlineItems, outlineRootCount } = outlinePdfDataStructure(
+                inputOutline,
+                pageRefsLength
+            );
 
-            for (let i = 0; i < outline.length; i++) {
+            for (let i = 0; i < pageRefsLength; i++) {
                 const { Title, Dest, Parent, Count, First, Last, Next, Prev } = pseudoOutlineItems[i];
                 outlineItem[i] = createOutlineNode(doc, {
                     Title: PDFHexString.fromText(Title),
-                    Parent: typeof Parent === "number" ? outlineItemRef[Parent] : Parent,
+                    Parent: Parent !== -1 ? outlineItemRef[Parent] : outlineRootRef,
                     ...(Prev !== undefined && {
                         Prev: outlineItemRef[Prev],
                     }),
@@ -136,17 +137,17 @@ export function outlinePdfFactory(_: {
             const outlinesDict = createOutlineDict(doc, {
                 // /Type /Outline  ???
                 First: outlineItemRef[0],
-                Last: outlineItemRef[outline.length - 1],
+                Last: outlineItemRef[pageRefsLength - 1],
                 Count: PDFNumber.of(outlineRootCount),
             });
 
             //First 'Outline' object. Refer to table H.3 in Annex H.6 of PDF Specification doc.
-            doc.context.assign(outlinesDictRef, outlinesDict);
+            doc.context.assign(outlineRootRef, outlinesDict);
 
             //Actual outline items that will be displayed
-            outline.forEach((_l, i) => {
+            for (let i = 0; i < pageRefsLength; i++) {
                 doc.context.assign(outlineItemRef[i], outlineItem[i]);
-            });
+            }
         },
     };
 }

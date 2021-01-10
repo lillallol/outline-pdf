@@ -13,9 +13,9 @@ import type {
     PDFHexString as _PDFHexString,
 } from "pdf-lib";
 
-import { outlinePdfFactory } from "../../outlinePdf/outlinePdf/outlinePdfFactory";
-import { rejectIfPathExistsFactory } from "../rejectIfPathExistsFactory";
-import { throwIfPathDoesNotEndWithPdf } from "../throwIfPathDoesNotEndWithPdf";
+import { outlinePdfFactory } from "../outlinePdf/outlinePdfFactory";
+import { rejectIfPathExistsFactory } from "./rejectIfPathExistsFactory";
+import { throwIfPathDoesNotEndWithPdf } from "./throwIfPathDoesNotEndWithPdf";
 
 export function outlinePdfCjsFactory(
     fs: {
