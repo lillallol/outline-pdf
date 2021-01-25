@@ -5,7 +5,6 @@
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"module": "./dist/index.esm.js",
-	"type": "commonjs",
 	"scripts": {
 		"start": "http-server -p 8080 -c-1",
 		"dead-files": "unimported",
@@ -38,8 +37,7 @@
 		"expand",
 		"high level API",
 		"native",
-		"browser",
-		"node"
+		"browser"
 	],
 	"author": "lillallol",
 	"license": "MIT",
@@ -59,7 +57,6 @@
 	},
 	"dependencies": {
 		"@lillallol/outline-pdf-data-structure": "^1.0.0",
-		"@types/node": "^14.14.12",
 		"pdf-lib": "^1.11.2"
 	},
 	"bugs": {
