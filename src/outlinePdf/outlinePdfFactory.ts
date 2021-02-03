@@ -108,7 +108,7 @@ export function outlinePdfFactory(_: {
                 pageRefsLength
             );
 
-            for (let i = 0; i < pageRefsLength; i++) {
+            for (let i = 0; i < pseudoOutlineItems.length; i++) {
                 const { Title, Dest, Parent, Count, First, Last, Next, Prev } = pseudoOutlineItems[i];
                 outlineItem[i] = createOutlineNode(doc, {
                     Title: PDFHexString.fromText(Title),
@@ -137,7 +137,7 @@ export function outlinePdfFactory(_: {
             const outlinesDict = createOutlineDict(doc, {
                 // /Type /Outline  ???
                 First: outlineItemRef[0],
-                Last: outlineItemRef[pageRefsLength - 1],
+                Last: outlineItemRef[pseudoOutlineItems.length - 1],
                 Count: PDFNumber.of(outlineRootCount),
             });
 
@@ -145,7 +145,7 @@ export function outlinePdfFactory(_: {
             doc.context.assign(outlineRootRef, outlinesDict);
 
             //Actual outline items that will be displayed
-            for (let i = 0; i < pageRefsLength; i++) {
+            for (let i = 0; i < pseudoOutlineItems.length; i++) {
                 doc.context.assign(outlineItemRef[i], outlineItem[i]);
             }
         },

@@ -13,7 +13,7 @@
 
 ## Description
 
-Take a look at [@lillallol/outline-pdf-cjs](https://github.com/lillallol/outline-pdf-cjs) if you are using node.
+Take a look at [@lillallol/outline-pdf-cjs](https://www.npmjs.com/package/@lillallol/outline-pdf-cjs) if you are using node.
 
 This module can add outline to pdf that do not have one. As of right now, it is the only module in the npm registry that has the following characteristics :
 
@@ -98,7 +98,7 @@ npm install pdf-lib;
 
 ## Motivation
 
-I searched in the npm registry for a module that had some of the functionalities described [here](#description), because I had to use it in one of my projects [documentation-to-pdf](https://github.com/lillallol/documentation-to-pdf). I could not find one, so I decided to create my own.
+I searched in the npm registry for a module that had some of the functionalities described [here](#description), because I had to use it in one of my projects [@lillallol/documentation-to-pdf](https://www.npmjs.com/package/@lillallol/documentation-to-pdf). I could not find one, so I decided to create my own.
 
 ## You might find interesting
 
