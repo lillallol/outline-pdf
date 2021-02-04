@@ -56,7 +56,7 @@
 		"unimported": "^1.5.0"
 	},
 	"dependencies": {
-		"@lillallol/outline-pdf-data-structure": "^1.0.0",
+		"@lillallol/outline-pdf-data-structure": "^1.0.2",
 		"pdf-lib": "^1.11.2"
 	},
 	"bugs": {

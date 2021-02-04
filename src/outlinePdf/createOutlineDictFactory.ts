@@ -1,8 +1,17 @@
-import type { PDFDocument, PDFNumber, PDFRef, PDFName as _PDFName, PDFDict as _PDFDict } from "pdf-lib";
+import type {
+    PDFDocument,
+    PDFNumber,
+    PDFRef,
+    PDFName as _PDFName,
+    PDFDict as _PDFDict,
+} from "pdf-lib";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function createOutlineDictFactory(_: { PDFName: typeof _PDFName; PDFDict: typeof _PDFDict }) {
-    const { PDFDict, PDFName } = _;
+export function createOutlineDictFactory(_: {
+    PDFName: typeof _PDFName;
+    PDFDict: typeof _PDFDict;
+}) {
+    const { PDFDict, PDFName} = _;
     return function createOutlineDict(
         doc: PDFDocument,
         _: {

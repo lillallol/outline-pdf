@@ -15,37 +15,47 @@ import { getPageRefsFactory } from "./getPageRefsFactory";
 import { outlinePdfDataStructure } from "@lillallol/outline-pdf-data-structure";
 
 export type IOutlinePdf = {
+    /**
+     * @private
+     */
     _pdfDocument?: _PDFDocument;
+    /**
+     * @private
+     */
     _outline?: string;
     /**
-     * @description Returns the loaded pdf.
+     * @description
+     * Returns the loaded pdf.
      */
     savePdf: _PDFDocument["save"];
     /**
-     * @description Loads the provided pdf.
+     * @description
+     * Loads the provided pdf.
      */
     loadPdf: typeof _PDFDocument["load"];
     /**
-     * @description A string representation of the outline.
+     * @description
+     * A string representation of the outline.
      * @example
      * // first column  : page number
      * //                 negative for collapsing outline
      * // second column : outline depth
      * // third column  : outline title
      * `
-     * 	  1||some title
-     * 	 12|-|some title
-     * 	-30|--|some title
-     * 	 34|---|some title
-     * 	 35|---|some title
-     * 	 60|--|some title
-     * 	 67|-|some title
-     * 	 80||some title
+     * 	  1||some title 1
+     * 	 12|-|some title 2
+     * 	-30|--|some title 3
+     * 	 34|---|some title 4
+     * 	 35|---|some title 5
+     * 	 60|--|some title 6
+     * 	 67|-|some title 7
+     * 	 80||some title 8
      * `
      */
     outline: string;
     /**
-     * @description Adds the outline to the loaded pdf.
+     * @description
+     * Adds the outline to the loaded pdf.
      */
     applyOutlineToPdf(): void;
 };
@@ -135,7 +145,6 @@ export function outlinePdfFactory(_: {
             }
 
             const outlinesDict = createOutlineDict(doc, {
-                // /Type /Outline  ???
                 First: outlineItemRef[0],
                 Last: outlineItemRef[pseudoOutlineItems.length - 1],
                 Count: PDFNumber.of(outlineRootCount),

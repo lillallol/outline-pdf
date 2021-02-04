@@ -41,7 +41,7 @@ describe(outlinePdfFactory.name, () => {
            -3|--|Some random title 3
             4|---|Some random title 4
             5|---|Some random title 5
-            6|-|Some random title 6
+            5|-|Some random title 6
         `;
         outlinePdf.applyOutlineToPdf();
         fs.writeFileSync(path.resolve(__dirname, outlinedPdfFileName), await outlinePdf.savePdf());
