@@ -108,7 +108,7 @@ export function outlinePdfFactory(_: {
             const outlineItemRef: _PDFRef[] = [];
             const outlineItem: _PDFDict[] = [];
 
-            for (let i = 0; i < pageRefsLength; i++) {
+            for (let i = 0; i < inputOutline.length; i++) {
                 outlineItemRef.push(doc.context.nextRef());
             }
 
