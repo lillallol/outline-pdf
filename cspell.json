@@ -1,9 +1,14 @@
 {
 	"language": "en",
-	"ignorePaths": ["dist/**","node_modules/**","./**/*.pdf","package-lock.json","jest.config.js","coverage/**"],
+	"ignorePaths": ["dist/**","node_modules/**","./**/*.pdf","package-lock.json","jest.config.js","coverage/**","*,svg"],
 	"words": [
         "lillallol",
         "unimported",
-        "ecmascript"
+        "ecmascript",
+        "codecov",
+        "fantasticon",
+        "COVID",
+        "Bootcamp",
+        "Quora"
 	]
 }

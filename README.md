@@ -11,6 +11,9 @@
 -   [FAQs](#faqs)
 -   [License](#license)
 
+
+> **NOTICE**: If you have outlined your pdf using a version from 2.0.0 to 3.0.3, then if you edit your pdf it will get corrupted due to a bug introduced by my module. From version 3.0.4 this bug has been resolved.
+
 ## Description
 
 Take a look at [@lillallol/outline-pdf-cjs](https://www.npmjs.com/package/@lillallol/outline-pdf-cjs) if you are using node.
