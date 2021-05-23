@@ -8,22 +8,21 @@ import type {
     PDFDict as _PDFDict,
 } from "pdf-lib";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function createOutlineNodeFactory(_: { PDFName: typeof _PDFName; PDFDict: typeof _PDFDict }) {
+export function createOutlineNodeFactory(_: { PDFName: typeof _PDFName; PDFDict: typeof _PDFDict }): (
+    doc: PDFDocument,
+    _: {
+        Title: PDFHexString;
+        Parent: PDFRef;
+        Prev?: PDFRef;
+        Next?: PDFRef;
+        First?: PDFRef;
+        Last?: PDFRef;
+        Count?: PDFNumber;
+        Dest: PDFArray;
+    }
+) => _PDFDict {
     const { PDFDict, PDFName } = _;
-    return function createOutlineNode(
-        doc: PDFDocument,
-        _: {
-            Title: PDFHexString;
-            Parent: PDFRef;
-            Prev?: PDFRef;
-            Next?: PDFRef;
-            First?: PDFRef;
-            Last?: PDFRef;
-            Count?: PDFNumber;
-            Dest: PDFArray;
-        }
-    ): _PDFDict {
+    return function createOutlineNode(doc, _) {
         const map = new Map();
 
         map.set(PDFName.Title, _.Title);

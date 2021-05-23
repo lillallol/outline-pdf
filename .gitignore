@@ -3,5 +3,4 @@ node_modules
 TBD
 dist
 /TODO.md
-github-pages
-.eslintignore
+/documentation.md

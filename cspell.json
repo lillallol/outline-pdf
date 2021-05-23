@@ -1,14 +1,21 @@
 {
-	"language": "en",
-	"ignorePaths": ["dist/**","node_modules/**","./**/*.pdf","package-lock.json","jest.config.js","coverage/**","*,svg"],
-	"words": [
+    "language": "en",
+    "ignorePaths": [
+        "dist/**",
+        "node_modules/**",
+        "./**/*.pdf",
+        "package-lock.json",
+        "jest.config.js",
+        "coverage/**",
+        "TBD/**"
+    ],
+    "words": [
         "lillallol",
         "unimported",
         "ecmascript",
-        "codecov",
-        "fantasticon",
-        "COVID",
-        "Bootcamp",
-        "Quora"
-	]
+        "unimportedrc",
+        "endregion",
+        "typeof",
+        "outlinepdffactory"
+    ]
 }
